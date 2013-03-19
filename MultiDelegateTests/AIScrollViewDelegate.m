@@ -6,11 +6,11 @@
 
 @implementation AIScrollViewDelegate
 
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+- (void)scrollViewDidScroll:(UIScrollView*)scrollView {
     _scrollCount += 1;
 }
 
-- (BOOL)scrollViewShouldScrollToTop:(UIScrollView *)scrollView {
+- (BOOL)scrollViewShouldScrollToTop:(UIScrollView*)scrollView {
     return _shouldScrollToTop;
 }
 
