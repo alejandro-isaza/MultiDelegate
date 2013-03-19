@@ -3,6 +3,7 @@
 
 #import "AIMultiDelegate.h"
 
+
 @implementation AIMultiDelegate
 
 - (id)init {
@@ -10,7 +11,7 @@
     if (!self)
         return nil;
     
-    _delegates = [[NSMutableArray alloc] init];
+    _delegates = CFBridgingRelease(CFArrayCreateMutable(NULL, 0, NULL));
     return self;
 }
 
