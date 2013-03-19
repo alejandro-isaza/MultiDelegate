@@ -30,6 +30,28 @@
     [multiDelegate addDelegate:testDelegate];
     STAssertEquals(multiDelegate.delegates.count, 1u, nil);
     STAssertEquals([multiDelegate.delegates objectAtIndex:0], testDelegate, nil);
+    
+    NSObject* testDelegate1 = [[NSObject alloc] init];
+    [multiDelegate addDelegate:testDelegate1 beforeDelegate:testDelegate];
+    STAssertEquals(multiDelegate.delegates.count, 2u, nil);
+    STAssertEquals([multiDelegate.delegates objectAtIndex:0], testDelegate1, nil);
+    
+    NSObject* testDelegate2 = [[NSObject alloc] init];
+    [multiDelegate addDelegate:testDelegate2 afterDelegate:testDelegate];
+    STAssertEquals(multiDelegate.delegates.count, 3u, nil);
+    STAssertEquals([multiDelegate.delegates objectAtIndex:2], testDelegate2, nil);
+}
+
+- (void)testAddBeforeAndAfterNil {
+    NSObject* testDelegate = [[NSObject alloc] init];
+    [multiDelegate addDelegate:testDelegate afterDelegate:nil];
+    STAssertEquals(multiDelegate.delegates.count, 1u, nil);
+    STAssertEquals([multiDelegate.delegates objectAtIndex:0], testDelegate, nil);
+    
+    [multiDelegate removeAllDelegates];
+    [multiDelegate addDelegate:testDelegate beforeDelegate:nil];
+    STAssertEquals(multiDelegate.delegates.count, 1u, nil);
+    STAssertEquals([multiDelegate.delegates objectAtIndex:0], testDelegate, nil);
 }
 
 - (void)testRemoveDelegate {
