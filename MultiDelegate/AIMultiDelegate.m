@@ -4,14 +4,23 @@
 #import "AIMultiDelegate.h"
 
 
-@implementation AIMultiDelegate
+@implementation AIMultiDelegate {
+    NSMutableArray* _delegates;
+}
 
 - (id)init {
+    return [self initWithDelegates:nil];
+}
+
+- (id)initWithDelegates:(NSArray*)delegates {
     self = [super init];
     if (!self)
         return nil;
     
     _delegates = CFBridgingRelease(CFArrayCreateMutable(NULL, 0, NULL));
+    for (id delegate in delegates)
+        [_delegates addObject:delegate];
+    
     return self;
 }
 
@@ -44,10 +53,15 @@
 }
 
 - (BOOL)respondsToSelector:(SEL)selector {
-    BOOL responds = [super respondsToSelector:selector];
-    for (id delegate in _delegates)
-        responds = responds || [delegate respondsToSelector:selector];
-    return responds;
+    if ([super respondsToSelector:selector])
+        return YES;
+    
+    for (id delegate in _delegates) {
+        if ([delegate respondsToSelector:selector])
+            return YES;
+    }
+    
+    return NO;
 }
 
 - (NSMethodSignature *)methodSignatureForSelector:(SEL)selector {

@@ -5,7 +5,9 @@
 
 @interface AIMultiDelegate : NSObject
 
-@property (strong, nonatomic) NSMutableArray* delegates;
+@property (readonly, nonatomic) NSArray* delegates;
+
+- (id)initWithDelegates:(NSArray*)delegates;
 
 - (void)addDelegate:(id)delegate;
 - (void)addDelegate:(id)delegate beforeDelegate:(id)otherDelegate;
