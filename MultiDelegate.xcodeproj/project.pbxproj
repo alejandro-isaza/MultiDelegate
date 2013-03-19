@@ -55,6 +55,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		A9D17C3E16F7F7CB008FF67E /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		A9D17C3F16F7F7CB008FF67E /* README.md */ = {isa = PBXFileReference; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		D83CFE9F16F7C7F800EB20B9 /* libMultiDelegate.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libMultiDelegate.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		D83CFEA216F7C7F800EB20B9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D83CFEA616F7C7F800EB20B9 /* MultiDelegate-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MultiDelegate-Prefix.pch"; sourceTree = "<group>"; };
@@ -121,6 +123,8 @@
 		D83CFE9616F7C7F800EB20B9 = {
 			isa = PBXGroup;
 			children = (
+				A9D17C3F16F7F7CB008FF67E /* README.md */,
+				A9D17C3E16F7F7CB008FF67E /* LICENSE */,
 				D83CFEA416F7C7F800EB20B9 /* MultiDelegate */,
 				D83CFEB916F7C7F900EB20B9 /* MultiDelegateTests */,
 				D83CFED616F7DF1900EB20B9 /* MultiDelegateExample */,
@@ -579,6 +583,7 @@
 				D83CFEEA16F7DF1900EB20B9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
