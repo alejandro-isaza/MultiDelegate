@@ -74,6 +74,10 @@
         if (signature)
             break;
     }
+    if (self.bailoutWhenEmpty && _delegates.count == 0) {
+        //just return any methodSignature, it doesn't really matter
+        return [self methodSignatureForSelector:@selector(description)];
+    }
     
     return signature;
 }
@@ -89,7 +93,7 @@
         }
     }
     
-    if (!responded)
+    if (!responded && !self.bailoutWhenEmpty)
         [self doesNotRecognizeSelector:selector];
 }
 

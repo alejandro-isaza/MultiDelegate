@@ -7,6 +7,11 @@
 
 @property (readonly, nonatomic) NSArray* delegates;
 
+/**
+ @discussion if set to YES, AIMultiDelegate will do nothing when a method is called on it but it has no delegates
+ */
+@property (nonatomic, assign) BOOL bailoutWhenEmpty;
+
 - (id)initWithDelegates:(NSArray*)delegates;
 
 - (void)addDelegate:(id)delegate;
