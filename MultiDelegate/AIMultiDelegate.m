@@ -67,7 +67,12 @@
 - (NSMethodSignature *)methodSignatureForSelector:(SEL)selector {
     NSMethodSignature* signature = [super methodSignatureForSelector:selector];
     if (signature)
-        return  signature;
+        return signature;
+    
+    if (self.silentWhenEmpty && _delegates.count == 0) {
+        // return any method signature, it doesn't really matter
+        return [self methodSignatureForSelector:@selector(description)];
+    }
     
     for (id delegate in _delegates) {
         signature = [delegate methodSignatureForSelector:selector];
@@ -89,7 +94,7 @@
         }
     }
     
-    if (!responded)
+    if (!responded && !self.silentWhenEmpty)
         [self doesNotRecognizeSelector:selector];
 }
 

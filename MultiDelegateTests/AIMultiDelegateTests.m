@@ -104,4 +104,9 @@
     STAssertTrue(shouldScroll, nil);
 }
 
+- (void)testEmpty {
+    multiDelegate.silentWhenEmpty = YES;
+    STAssertNoThrow([(id)multiDelegate scrollViewDidScroll:nil], @"Should not throw an exception when empty");
+}
+
 @end
