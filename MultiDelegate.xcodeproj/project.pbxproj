@@ -10,7 +10,6 @@
 		D83CFEA316F7C7F800EB20B9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D83CFEA216F7C7F800EB20B9 /* Foundation.framework */; };
 		D83CFEA816F7C7F800EB20B9 /* AIMultiDelegate.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = D83CFEA716F7C7F800EB20B9 /* AIMultiDelegate.h */; };
 		D83CFEAA16F7C7F800EB20B9 /* AIMultiDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D83CFEA916F7C7F800EB20B9 /* AIMultiDelegate.m */; };
-		D83CFEB216F7C7F900EB20B9 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D83CFEB116F7C7F900EB20B9 /* SenTestingKit.framework */; };
 		D83CFEB416F7C7F900EB20B9 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D83CFEB316F7C7F900EB20B9 /* UIKit.framework */; };
 		D83CFEB516F7C7F900EB20B9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D83CFEA216F7C7F800EB20B9 /* Foundation.framework */; };
 		D83CFEB816F7C7F900EB20B9 /* libMultiDelegate.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D83CFE9F16F7C7F800EB20B9 /* libMultiDelegate.a */; };
@@ -62,8 +61,7 @@
 		D83CFEA616F7C7F800EB20B9 /* MultiDelegate-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MultiDelegate-Prefix.pch"; sourceTree = "<group>"; };
 		D83CFEA716F7C7F800EB20B9 /* AIMultiDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AIMultiDelegate.h; sourceTree = "<group>"; };
 		D83CFEA916F7C7F800EB20B9 /* AIMultiDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AIMultiDelegate.m; sourceTree = "<group>"; };
-		D83CFEB016F7C7F900EB20B9 /* MultiDelegateTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MultiDelegateTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
-		D83CFEB116F7C7F900EB20B9 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		D83CFEB016F7C7F900EB20B9 /* MultiDelegateTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MultiDelegateTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D83CFEB316F7C7F900EB20B9 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		D83CFEBB16F7C7F900EB20B9 /* MultiDelegateTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MultiDelegateTests-Info.plist"; sourceTree = "<group>"; };
 		D83CFEBD16F7C7F900EB20B9 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -100,7 +98,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D83CFEB216F7C7F900EB20B9 /* SenTestingKit.framework in Frameworks */,
 				D83CFEB416F7C7F900EB20B9 /* UIKit.framework in Frameworks */,
 				D83CFEB516F7C7F900EB20B9 /* Foundation.framework in Frameworks */,
 				D83CFEB816F7C7F900EB20B9 /* libMultiDelegate.a in Frameworks */,
@@ -137,7 +134,7 @@
 			isa = PBXGroup;
 			children = (
 				D83CFE9F16F7C7F800EB20B9 /* libMultiDelegate.a */,
-				D83CFEB016F7C7F900EB20B9 /* MultiDelegateTests.octest */,
+				D83CFEB016F7C7F900EB20B9 /* MultiDelegateTests.xctest */,
 				D83CFED116F7DF1900EB20B9 /* MultiDelegateExample.app */,
 			);
 			name = Products;
@@ -147,7 +144,6 @@
 			isa = PBXGroup;
 			children = (
 				D83CFEA216F7C7F800EB20B9 /* Foundation.framework */,
-				D83CFEB116F7C7F900EB20B9 /* SenTestingKit.framework */,
 				D83CFEB316F7C7F900EB20B9 /* UIKit.framework */,
 				D83CFED416F7DF1900EB20B9 /* CoreGraphics.framework */,
 			);
@@ -256,8 +252,8 @@
 			);
 			name = MultiDelegateTests;
 			productName = MultiDelegateTests;
-			productReference = D83CFEB016F7C7F900EB20B9 /* MultiDelegateTests.octest */;
-			productType = "com.apple.product-type.bundle";
+			productReference = D83CFEB016F7C7F900EB20B9 /* MultiDelegateTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		D83CFED016F7DF1900EB20B9 /* MultiDelegateExample */ = {
 			isa = PBXNativeTarget;
@@ -282,6 +278,7 @@
 		D83CFE9716F7C7F800EB20B9 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastTestingUpgradeCheck = 0510;
 				LastUpgradeCheck = 0460;
 				ORGANIZATIONNAME = "Alejandro Isaza";
 			};
@@ -487,12 +484,12 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
 					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+					"$(inherited)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MultiDelegate/MultiDelegate-Prefix.pch";
 				INFOPLIST_FILE = "MultiDelegateTests/MultiDelegateTests-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				WRAPPER_EXTENSION = octest;
 			};
 			name = Debug;
 		};
@@ -502,12 +499,12 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
 					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+					"$(inherited)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MultiDelegate/MultiDelegate-Prefix.pch";
 				INFOPLIST_FILE = "MultiDelegateTests/MultiDelegateTests-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				WRAPPER_EXTENSION = octest;
 			};
 			name = Release;
 		};

@@ -5,7 +5,7 @@
 
 
 @implementation AIMultiDelegate {
-    NSMutableArray* _delegates;
+    NSPointerArray* _delegates;
 }
 
 - (id)init {
@@ -16,40 +16,52 @@
     self = [super init];
     if (!self)
         return nil;
-    
-    _delegates = CFBridgingRelease(CFArrayCreateMutable(NULL, 0, NULL));
+
+    _delegates = [NSPointerArray weakObjectsPointerArray];
     for (id delegate in delegates)
-        [_delegates addObject:delegate];
+        [_delegates addPointer:(__bridge void*)delegate];
     
     return self;
 }
 
 - (void)addDelegate:(id)delegate {
-    [_delegates addObject:delegate];
+    [_delegates addPointer:(__bridge void*)delegate];
+}
+
+- (NSUInteger)indexOfDelegate:(id)delegate {
+    for (NSUInteger i = 0; i < _delegates.count; i += 1) {
+        if ([_delegates pointerAtIndex:i] == (__bridge void*)delegate) {
+            return i;
+        }
+    }
+    return NSNotFound;
 }
 
 - (void)addDelegate:(id)delegate beforeDelegate:(id)otherDelegate {
-    NSUInteger index = [_delegates indexOfObjectIdenticalTo:otherDelegate];
+    NSUInteger index = [self indexOfDelegate:otherDelegate];
     if (index == NSNotFound)
         index = _delegates.count;
-    [_delegates insertObject:delegate atIndex:index];
+    [_delegates insertPointer:(__bridge void*)delegate atIndex:index];
 }
 
 - (void)addDelegate:(id)delegate afterDelegate:(id)otherDelegate {
-    NSUInteger index = [_delegates indexOfObjectIdenticalTo:otherDelegate];
+    NSUInteger index = [self indexOfDelegate:otherDelegate];
     if (index == NSNotFound)
         index = 0;
     else
         index += 1;
-    [_delegates insertObject:delegate atIndex:index];
+    [_delegates insertPointer:(__bridge void*)delegate atIndex:index];
 }
 
 - (void)removeDelegate:(id)delegate {
-    [_delegates removeObject:delegate];
+    NSUInteger index = [self indexOfDelegate:delegate];
+    if (index != NSNotFound)
+        [_delegates removePointerAtIndex:index];
 }
 
 - (void)removeAllDelegates {
-    [_delegates removeAllObjects];
+    for (NSUInteger i = _delegates.count; i > 0; i -= 1)
+        [_delegates removePointerAtIndex:i - 1];
 }
 
 - (BOOL)respondsToSelector:(SEL)selector {
@@ -57,7 +69,7 @@
         return YES;
     
     for (id delegate in _delegates) {
-        if ([delegate respondsToSelector:selector])
+        if (delegate && [delegate respondsToSelector:selector])
             return YES;
     }
     
@@ -75,6 +87,9 @@
     }
     
     for (id delegate in _delegates) {
+        if (!delegate)
+            continue;
+
         signature = [delegate methodSignatureForSelector:selector];
         if (signature)
             break;
@@ -88,7 +103,7 @@
     BOOL responded = NO;
     
     for (id delegate in _delegates) {
-        if ([delegate respondsToSelector:selector]) {
+        if (delegate && [delegate respondsToSelector:selector]) {
             [invocation invokeWithTarget:delegate];
             responded = YES;
         }

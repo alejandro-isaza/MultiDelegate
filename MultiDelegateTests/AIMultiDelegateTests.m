@@ -1,13 +1,13 @@
 //  Created by Alejandro Isaza on 13-03-18.
 //  Copyright (c) 2013 Alejandro Isaza. All rights reserved.
 
-#import <SenTestingKit/SenTestingKit.h>
+#import <XCTest/XCTest.h>
 
 #import "AIMultiDelegate.h"
 #import "AIScrollViewDelegate.h"
 
 
-@interface AIMultiDelegateTests : SenTestCase
+@interface AIMultiDelegateTests : XCTestCase
 @end
 
 
@@ -28,58 +28,58 @@
 - (void)testAddDelegate {
     NSObject* testDelegate = [[NSObject alloc] init];
     [multiDelegate addDelegate:testDelegate];
-    STAssertEquals(multiDelegate.delegates.count, 1u, nil);
-    STAssertEquals([multiDelegate.delegates objectAtIndex:0], testDelegate, nil);
+    XCTAssertEqual(multiDelegate.delegates.count, 1u);
+    XCTAssertEqual((__bridge id)[multiDelegate.delegates pointerAtIndex:0], testDelegate);
     
     NSObject* testDelegate1 = [[NSObject alloc] init];
     [multiDelegate addDelegate:testDelegate1 beforeDelegate:testDelegate];
-    STAssertEquals(multiDelegate.delegates.count, 2u, nil);
-    STAssertEquals([multiDelegate.delegates objectAtIndex:0], testDelegate1, nil);
+    XCTAssertEqual(multiDelegate.delegates.count, 2u);
+    XCTAssertEqual((__bridge id)[multiDelegate.delegates pointerAtIndex:0], testDelegate1);
     
     NSObject* testDelegate2 = [[NSObject alloc] init];
     [multiDelegate addDelegate:testDelegate2 afterDelegate:testDelegate];
-    STAssertEquals(multiDelegate.delegates.count, 3u, nil);
-    STAssertEquals([multiDelegate.delegates objectAtIndex:2], testDelegate2, nil);
+    XCTAssertEqual(multiDelegate.delegates.count, 3u);
+    XCTAssertEqual((__bridge id)[multiDelegate.delegates pointerAtIndex:2], testDelegate2);
 }
 
 - (void)testAddBeforeAndAfterNil {
     NSObject* testDelegate = [[NSObject alloc] init];
     [multiDelegate addDelegate:testDelegate afterDelegate:nil];
-    STAssertEquals(multiDelegate.delegates.count, 1u, nil);
-    STAssertEquals([multiDelegate.delegates objectAtIndex:0], testDelegate, nil);
+    XCTAssertEqual(multiDelegate.delegates.count, 1u);
+    XCTAssertEqual((__bridge id)[multiDelegate.delegates pointerAtIndex:0], testDelegate);
     
     [multiDelegate removeAllDelegates];
     [multiDelegate addDelegate:testDelegate beforeDelegate:nil];
-    STAssertEquals(multiDelegate.delegates.count, 1u, nil);
-    STAssertEquals([multiDelegate.delegates objectAtIndex:0], testDelegate, nil);
+    XCTAssertEqual(multiDelegate.delegates.count, 1u);
+    XCTAssertEqual((__bridge id)[multiDelegate.delegates pointerAtIndex:0], testDelegate);
 }
 
 - (void)testRemoveDelegate {
     NSObject* testDelegate = [[NSObject alloc] init];
     [multiDelegate addDelegate:testDelegate];
-    STAssertEquals(multiDelegate.delegates.count, 1u, nil);
+    XCTAssertEqual(multiDelegate.delegates.count, 1u);
     
     [multiDelegate removeDelegate:testDelegate];
-    STAssertEquals(multiDelegate.delegates.count, 0u, nil);
+    XCTAssertEqual(multiDelegate.delegates.count, 0u);
 }
 
 - (void)testRespondsToSelector {
-    STAssertFalse([multiDelegate respondsToSelector:@selector(scrollViewDidScroll:)], nil);
+    XCTAssertFalse([multiDelegate respondsToSelector:@selector(scrollViewDidScroll:)]);
     
     AIScrollViewDelegate* testDelegate = [[AIScrollViewDelegate alloc] init];
     [multiDelegate addDelegate:testDelegate];
     
-    STAssertTrue([multiDelegate respondsToSelector:@selector(scrollViewDidScroll:)], nil);
-    STAssertFalse([multiDelegate respondsToSelector:@selector(scrollViewWillBeginDecelerating:)], nil);
+    XCTAssertTrue([multiDelegate respondsToSelector:@selector(scrollViewDidScroll:)]);
+    XCTAssertFalse([multiDelegate respondsToSelector:@selector(scrollViewWillBeginDecelerating:)]);
 }
 
 - (void)testForwardInvocation {
     AIScrollViewDelegate* testDelegate = [[AIScrollViewDelegate alloc] init];
     [multiDelegate addDelegate:testDelegate];
     
-    STAssertEquals(0, testDelegate.scrollCount, nil);
+    XCTAssertEqual(0, testDelegate.scrollCount);
     [(id)multiDelegate scrollViewDidScroll:nil];
-    STAssertEquals(1, testDelegate.scrollCount, nil);
+    XCTAssertEqual(1, testDelegate.scrollCount);
 }
 
 - (void)testReturnValue {
@@ -88,7 +88,7 @@
     [multiDelegate addDelegate:testDelegate];
     
     BOOL shouldScroll = [(id)multiDelegate scrollViewShouldScrollToTop:nil];
-    STAssertTrue(shouldScroll, nil);
+    XCTAssertTrue(shouldScroll);
 }
 
 - (void)testReturnValueOfMultipleDelegates {
@@ -101,12 +101,25 @@
     [multiDelegate addDelegate:testDelegate2];
     
     BOOL shouldScroll = [(id)multiDelegate scrollViewShouldScrollToTop:nil];
-    STAssertTrue(shouldScroll, nil);
+    XCTAssertTrue(shouldScroll);
 }
 
 - (void)testEmpty {
     multiDelegate.silentWhenEmpty = YES;
-    STAssertNoThrow([(id)multiDelegate scrollViewDidScroll:nil], @"Should not throw an exception when empty");
+    XCTAssertNoThrow([(id)multiDelegate scrollViewDidScroll:nil], @"Should not throw an exception when empty");
+}
+
+- (void)testDeallocatedDelegate {
+    AIScrollViewDelegate* testDelegate1 = [[AIScrollViewDelegate alloc] init];
+    [multiDelegate addDelegate:testDelegate1];
+
+    AIScrollViewDelegate* testDelegate2 = [[AIScrollViewDelegate alloc] init];
+    [multiDelegate addDelegate:testDelegate2];
+
+    // Force deallocation of one delegate
+    testDelegate1 = nil;
+
+    XCTAssertNoThrow([(id)multiDelegate scrollViewDidScroll:nil], @"Should not thrown an exception if a delegate was deallocated");
 }
 
 @end

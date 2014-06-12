@@ -11,7 +11,7 @@
 /**
  The array of registered delegates.
  */
-@property (readonly, nonatomic) NSArray* delegates;
+@property (readonly, nonatomic) NSPointerArray* delegates;
 
 /**
  Set whether to throw unrecognized selector exceptions when calling delegate methods on an empty AIMultiDelegate.
