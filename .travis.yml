@@ -1,0 +1,2 @@
+language: objective-c
+script: xcodebuild -project MultiDelegate.xcodeproj -scheme MultiDelegate -sdk iphonesimulator test
