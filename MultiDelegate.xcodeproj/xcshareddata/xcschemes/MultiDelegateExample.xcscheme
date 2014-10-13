@@ -33,7 +33,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "D83CFEAF16F7C7F900EB20B9"
-               BuildableName = "MultiDelegateTests.octest"
+               BuildableName = "MultiDelegateTests.xctest"
                BlueprintName = "MultiDelegateTests"
                ReferencedContainer = "container:MultiDelegate.xcodeproj">
             </BuildableReference>

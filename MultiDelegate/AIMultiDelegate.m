@@ -57,6 +57,7 @@
     NSUInteger index = [self indexOfDelegate:delegate];
     if (index != NSNotFound)
         [_delegates removePointerAtIndex:index];
+    [_delegates compact];
 }
 
 - (void)removeAllDelegates {
@@ -81,6 +82,7 @@
     if (signature)
         return signature;
     
+    [_delegates compact];
     if (self.silentWhenEmpty && _delegates.count == 0) {
         // return any method signature, it doesn't really matter
         return [self methodSignatureForSelector:@selector(description)];

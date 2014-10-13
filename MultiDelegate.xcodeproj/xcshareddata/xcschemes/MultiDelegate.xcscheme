@@ -33,7 +33,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "D83CFEAF16F7C7F900EB20B9"
-               BuildableName = "MultiDelegateTests.octest"
+               BuildableName = "MultiDelegateTests.xctest"
                BlueprintName = "MultiDelegateTests"
                ReferencedContainer = "container:MultiDelegate.xcodeproj">
             </BuildableReference>
@@ -49,6 +49,15 @@
       ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "YES"
       allowLocationSimulation = "YES">
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "D83CFE9E16F7C7F800EB20B9"
+            BuildableName = "libMultiDelegate.a"
+            BlueprintName = "MultiDelegate"
+            ReferencedContainer = "container:MultiDelegate.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>
