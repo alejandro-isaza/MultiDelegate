@@ -1,7 +1,7 @@
 MultiDelegate
 =============
 
-MultiDelegate is a delegate multiplexing class for Objective-C. In other words, it will dispatch delegate methods to multiple objects, instead of being restricted to a single delegate object. You can also use it as a generic method dispatch mechanism. For more information see the [blog post](http://www.a-coding.com/2013/03/delegate-multiplexing.html).
+MultiDelegate is a delegate multiplexing class for Objective-C. In other words, it will dispatch delegate methods to multiple objects, instead of being restricted to a single delegate object. You can also use it as a generic method dispatch mechanism. For more information see the [blog post](http://a-coding.com/delegate-multiplexing/).
 
 ## Example
 
