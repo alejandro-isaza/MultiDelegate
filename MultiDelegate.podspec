@@ -8,6 +8,7 @@ Pod::Spec.new do |s|
   s.source       = { :git => "https://github.com/aleph7/MultiDelegate.git", :tag => "0.0.1" }
   s.ios.deployment_target = '5.0'
   s.osx.deployment_target = '10.7'
+  s.tvos.deployment_target = '9.0'
   s.source_files = 'MultiDelegate'
   s.requires_arc = true
 end
