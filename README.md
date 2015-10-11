@@ -3,6 +3,8 @@ MultiDelegate
 
 MultiDelegate is a delegate multiplexing class for Objective-C. In other words, it will dispatch delegate methods to multiple objects, instead of being restricted to a single delegate object. You can also use it as a generic method dispatch mechanism. For more information see the [blog post](http://a-coding.com/delegate-multiplexing/).
 
+[![Build Status](https://travis-ci.org/aleph7/MultiDelegate.svg?branch=master)](https://travis-ci.org/aleph7/MultiDelegate)
+
 ## Example
 
 Suppose you have a `UITableView` and you want to implement the data source using two separate classes: one is the actual data source implementing the `tableView:numberOfRowsInSection:` method and the other one is the cell factory implementing the `tableView:cellForRowAtIndexPath:` method to construct the cells. 
