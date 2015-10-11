@@ -279,7 +279,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastTestingUpgradeCheck = 0510;
-				LastUpgradeCheck = 0460;
+				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "Alejandro Isaza";
 			};
 			buildConfigurationList = D83CFE9A16F7C7F800EB20B9 /* Build configuration list for PBXProject "MultiDelegate" */;
@@ -412,6 +412,7 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -489,6 +490,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MultiDelegate/MultiDelegate-Prefix.pch";
 				INFOPLIST_FILE = "MultiDelegateTests/MultiDelegateTests-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.aleph7.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -504,6 +506,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MultiDelegate/MultiDelegate-Prefix.pch";
 				INFOPLIST_FILE = "MultiDelegateTests/MultiDelegateTests-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.aleph7.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -520,6 +523,7 @@
 				GCC_PREFIX_HEADER = "MultiDelegateExample/MultiDelegateExample-Prefix.pch";
 				INFOPLIST_FILE = "MultiDelegateExample/MultiDelegateExample-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.aleph7.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -538,6 +542,7 @@
 				INFOPLIST_FILE = "MultiDelegateExample/MultiDelegateExample-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.aleph7.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
