@@ -25,6 +25,9 @@
 }
 
 - (void)addDelegate:(id)delegate {
+    if ([self indexOfDelegate:delegate]!=NSNotFound)
+        return;
+    
     [_delegates addPointer:(__bridge void*)delegate];
 }
 
@@ -38,6 +41,12 @@
 }
 
 - (void)addDelegate:(id)delegate beforeDelegate:(id)otherDelegate {
+    NSUInteger oldIndex=[self indexOfDelegate:delegate];
+    if (oldIndex!=NSNotFound)
+    {
+        [_delegates removePointerAtIndex:oldIndex];
+    }
+    
     NSUInteger index = [self indexOfDelegate:otherDelegate];
     if (index == NSNotFound)
         index = _delegates.count;
@@ -45,6 +54,12 @@
 }
 
 - (void)addDelegate:(id)delegate afterDelegate:(id)otherDelegate {
+    NSUInteger oldIndex=[self indexOfDelegate:delegate];
+    if (oldIndex!=NSNotFound)
+    {
+        [_delegates removePointerAtIndex:oldIndex];
+    }
+
     NSUInteger index = [self indexOfDelegate:otherDelegate];
     if (index == NSNotFound)
         index = 0;
