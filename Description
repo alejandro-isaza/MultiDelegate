@@ -1,0 +1,7 @@
+#include<stdio.h>  
+ int main()    
+{    
+ if(printf("hello my name is this Abc .......")){}    
+ printf("my email address is this abc@gmail.com";
+ retutn 0;
+ }
